@@ -1,0 +1,162 @@
+body {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    color: #fff;
+    min-height: 100vh;
+}
+header {
+    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+}
+header h1 {
+    font-size: 2.8rem;
+    margin: 0;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #ffd700 30%, #fff 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+header p {
+    margin-top: 0.5rem;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+.matches-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: rgba(255,255,255,0.10);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
+    padding: 2.5rem 2rem;
+}
+.match {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.18);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    padding: 1.2rem 2rem;
+    transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.match:hover {
+    background: rgba(255,255,255,0.28);
+    box-shadow: 0 4px 24px 0 rgba(255,215,0,0.18);
+    transform: translateY(-2px) scale(1.01);
+}
+.teams {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+}
+.team {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 1.18rem;
+    font-weight: 700;
+    transition: color 0.2s;
+}
+.team img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    object-fit: cover;
+    border: 2.5px solid #ffd700;
+    box-shadow: 0 2px 8px rgba(30,60,114,0.18);
+    transition: transform 0.2s;
+}
+.match:hover .team img {
+    transform: scale(1.1) rotate(-3deg);
+}
+.vs {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffd700;
+    text-shadow: 0 1px 4px #1e3c72;
+    letter-spacing: 1px;
+}
+.match-info {
+    text-align: right;
+    min-width: 170px;
+}
+.date {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+.venue {
+    font-size: 0.97rem;
+    color: #b0c4de;
+}
+.details {
+    display: none;
+    margin-top: 1.2rem;
+    background: rgba(255,255,255,0.13);
+    border-radius: 10px;
+    padding: 1.1rem 1.2rem;
+    font-size: 1.01rem;
+    color: #fff;
+    animation: fadeIn 0.3s;
+    box-shadow: 0 2px 12px 0 rgba(31,38,135,0.13);
+    border-left: 4px solid #ffd700;
+}
+.match.open .details {
+    display: block;
+    animation: fadeIn 0.3s;
+}
+.toggle-arrow {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.3rem;
+    color: #ffd700;
+    transition: transform 0.3s;
+    pointer-events: none;
+}
+.match.open .toggle-arrow {
+    transform: rotate(90deg);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+/* Animated background circles */
+.bg-circles {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.18;
+    filter: blur(2px);
+    animation: float 12s infinite alternate;
+}
+.bg-circle.c1 { width: 320px; height: 320px; background: #ffd700; left: 5vw; top: 10vh; animation-delay: 0s;}
+.bg-circle.c2 { width: 220px; height: 220px; background: #fff; right: 10vw; top: 25vh; animation-delay: 2s;}
+.bg-circle.c3 { width: 180px; height: 180px; background: #1e3c72; left: 40vw; bottom: 10vh; animation-delay: 4s;}
+@keyframes float {
+    0% { transform: translateY(0) scale(1);}
+    100% { transform: translateY(30px) scale(1.08);}
+}
+@media (max-width: 700px) {
+    .matches-container { padding: 1.2rem 0.5rem; }
+    .match { flex-direction: column; align-items: flex-start; padding: 1.2rem 1rem;}
+    .match-info { text-align: left; margin-top: 0.7rem; min-width: unset;}
+    .toggle-arrow { right: 1rem; top: 1rem;}
+}
+footer{
+    text-align:center;
+    padding: 1.5rem 0;
+}
